@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width = device-width, initial-scale = 1, shrink-to-fit = no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <title>Truck Platooning</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            setInterval(function(){
+                $("#here").load(location.href + ' #here');
+            }, 1000);
+        });
+    </script>
+
+</head>
+<body>
+<div class="container">
+    <h2  class = "mt-4">Truck Platooning</h2>
+    <div id="here">
+    <table class="table">
+        <thead class = "thead-light">
+        <tr>
+            <th class="text-left">PlatoonPid</th>
+            <th class="text-left">PlatoonPort</th>
+            <th class="text-left">CruisePort</th>
+            <th class="text-left">Speed</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each= " truck : ${trucks}">
+            <td th:text="${truck.pid}"></td>
+            <td th:text="${truck.platoonPort}"></td>
+            <td th:text="${truck.cruisePort}"></td>
+            <td th:text="${truck.speed}"></td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+    <hr>
+    <table>
+        <tbody>
+        <tr>
+            <form action="#" data-th-action="@{/}" th:object="${input}" method="post">
+                <td ><button type="submit" name="action" value="speedup" class = "btn btn-primary">Beschleunige</button></td>
+                <td ><button type="submit" name="action" value="slowdown" class = "btn btn-primary">Bremse</button></td>
+                <td ><button type="submit" name="action" value="stop" class = "btn btn-primary">Stop</button></td>
+                <td ><input type="text" th:field="*{pace}" name="name" placeholder="Gib die Geschwindigkeitsänderung ein:" size="50"/></td>
+            </form>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

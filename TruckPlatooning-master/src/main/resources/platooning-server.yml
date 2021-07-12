@@ -1,0 +1,24 @@
+# Spring properties
+spring:
+  application:
+    name: platooning-service  # Identify this application
+
+
+# Map the error path to error template (for Thymeleaf)
+error.path: /error
+
+# HTTP Server
+# server.port: 3333   # HTTP (Tomcat) port
+
+#Enable shutdown endpoint
+endpoints.shutdown.enabled: true
+management.endpoint.shutdown.enabled: true
+#No authentication required
+endpoints.shutdown.sensitive: false
+
+# Enable actuator access without security checks - DEVELOPMENT ONLY
+# Spring Boot 1.5
+# management.security.enabled: false
+# Spring Boot 2.x
+management.endpoints.web.exposure.include: '*'
+  
